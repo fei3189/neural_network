@@ -64,7 +64,7 @@ struct neural_network* create_nn(struct nn_config *config)
 					n->derivate = sigmoid_d;
 				} else if (strcmp(func, "tanh") == 0) {
 					n->compute= tgh;
-					n->derivate = tanh_d;
+					n->derivate = tgh_d;
 				} else {
 					printf("unknown activation function!");
 					return NULL;
@@ -143,15 +143,11 @@ void train(struct neural_network *nn, double **input, double **output, size_t nd
 	}
 	free_1d(delta);
 	free_1d(odelta);
-//	free_2d(values, nn->nlayer);
 }
 
 void predict(struct neural_network *nn, double *input, double *output)
 {
 	double **values = nn->values;
-/*	if (values == NULL) {
-		values = alloc_2dv(nn->dims, nn->nlayer);// memory leak here, but just one 2d array.
-	}*/
 	forward(nn, input);
 	memcpy(output, values[nn->nlayer-1], sizeof(double) * nn->dims[nn->nlayer-1]);
 }

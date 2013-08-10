@@ -41,7 +41,7 @@ double tgh(struct neuron *n, double *x)
 	return (a - b) / (a + b);
 }
 
-double tanh_d(struct neuron *n, double *x, double y)
+double tgh_d(struct neuron *n, double *x, double y)
 {
 	return 1.0 - y * y;
 }

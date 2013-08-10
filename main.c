@@ -2,7 +2,7 @@
 	> File Name: main.cpp
 	> Author: Felix Jiang
 	> Mail: f91.jiang@gmail.com 
-	> Created Time: 2013年08月08日 星期四 16时05分51秒
+	> Created Time: Aug 9th, 2013
  ************************************************************************/
 
 #include <stdio.h>

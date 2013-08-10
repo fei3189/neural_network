@@ -36,7 +36,7 @@ double sigmoid_d(struct neuron *n, double *x, double y);
 double tgh(struct neuron *n, double *x);
 
 /* derivation of tanh function */
-double tanh_d(struct neuron *n, double *x, double y);
+double tgh_d(struct neuron *n, double *x, double y);
 
 /* update the weight of neurons,
  * x: the input vector,
