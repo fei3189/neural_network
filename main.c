@@ -23,9 +23,9 @@ double _input[8][8] = {
 
 int main() {
 	int i, j;
-	size_t hidden[1] = { 300};
+	size_t hidden[1] = { 3 };
 	char *ch = "sigmoid";
-	char *chs[2] = {ch, ch};
+	char *chs[1] = {ch};
 
 	double **input = alloc_2d(8, 8), **output = alloc_2d(8, 8);
 	for (i = 0; i < 8; ++i) {
@@ -41,15 +41,25 @@ int main() {
 		.aofunc = ch
 	};
 	struct neural_network* nn = create_nn(&config);
-	train(nn, input, output, 8, 0.3, 0.3, 15000);
+	train(nn, input, output, 8, 0.3, 0, 5000);
 	
 	double res[8];
 
 	for (i = 0; i < 8; ++i) {
-		predict(nn, input[i], res);
 		for (j = 0; j < 8; ++j)
-			printf("%f ", res[j]);
+			printf("%d ", (int)input[i][j]);
+		printf("=> ");
+		predict_hidden(nn, input[i], res, 0);
+		for (j = 0; j < 3; ++j)
+			printf("%.3f ", res[j]);
+		predict(nn, input[i], res);
+		printf("=> ");
+		for (j = 0; j < 8; ++j)
+			printf("%.3f ", res[j]);
 		printf("\n");
 	}
+	free_2d(input, 8);
+	free_2d(output, 8);
+	destroy_nn(nn);
 	return 0;
 }

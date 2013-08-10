@@ -24,19 +24,16 @@ double linear(struct neuron *pn, double *x)
 	return y;
 }
 
-/* sigmoid function */
 double sigmoid(struct neuron *pn, double *x)
 {
 	return 1.0 / (1.0 + exp(-linear(pn, x)));
 }
 
-/* derivation of sigmoid function */
 double sigmoid_d(struct neuron *n, double *x, double y)
 {
 	return (1.0 - y) * y;
 }
 
-/* tanh function */
 double tgh(struct neuron *n, double *x)
 {
 	double y = linear(n, x);
@@ -44,13 +41,11 @@ double tgh(struct neuron *n, double *x)
 	return (a - b) / (a + b);
 }
 
-/* derivation of tanh function */
 double tanh_d(struct neuron *n, double *x, double y)
 {
 	return 1.0 - y * y;
 }
 
-/* update the weight of neurons */
 void update(struct neuron *n, double *x, double del_w, double momentum)
 {
 	size_t i;
