@@ -29,8 +29,8 @@
 
 int main() {
 	size_t i, j;
-	size_t nencode = 4, ninput = pow(2, nencode);  //Set the number of vectors
-	size_t iter_times = 15000; // Complex network requires more iteration times
+	size_t nencode = 5, ninput = pow(2, nencode);  //Set the number of vectors
+	size_t iter_times = 50000; // Complex network requires more iteration times
 	double rate = 0.5, momentum = 0.5; // Learning parameters;
 	size_t hidden[1] = { nencode };
 	char *ch = "sigmoid";
@@ -68,12 +68,12 @@ int main() {
 		predict_hidden(nn, input[i], res, 0);
 		for (j = 0; j < nencode; ++j) {
 			printf("%.3f ", res[j]);    // Actually value
-		//	printf("%d ", (int)(res[j]+0.5)); // 0-1 value
+//			printf("%d ", (int)(res[j]+0.5)); // 0-1 value
 		}
-		predict(nn, input[i], res);
-		printf("=> ");
-		for (j = 0; j < ninput; ++j)
-			printf("%.3f ", res[j]);
+//		predict(nn, input[i], res);
+//		printf("=> ");
+//		for (j = 0; j < ninput; ++j)
+//			printf("%.3f ", res[j]);
 		printf("\n");
 	}
 	free_2d(input, ninput);

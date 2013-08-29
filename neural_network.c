@@ -79,7 +79,7 @@ struct neural_network* create_nn(struct nn_config *config)
 	return nn;
 }
 
-void forward(struct neural_network *nn, double *input)
+static void forward(struct neural_network *nn, double *input)
 {
 	size_t i, j;
 	double **values = nn->values;
@@ -92,7 +92,7 @@ void forward(struct neural_network *nn, double *input)
 	}
 }
 
-double compute_hidden_delta(struct neural_network *nn, double *delta, size_t m, size_t n)
+static double compute_hidden_delta(struct neural_network *nn, double *delta, size_t m, size_t n)
 {
 	size_t i, dim = nn->dims[m + 1];
 	double del = 0.0;
@@ -178,3 +178,4 @@ void destroy_nn(struct neural_network *nn)
 	free(dims);
 	free(nn);
 }
+

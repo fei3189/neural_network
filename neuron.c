@@ -13,7 +13,7 @@
 /* size(x) == n, size(pn->weights) == n+1
  * The last element of pn->weights is the threshold
  */
-double linear(struct neuron *pn, double *x)
+static double linear(const struct neuron *pn, const double *x)
 {
 	double y = 0.0, *w = pn->weights;
 	size_t i;
@@ -24,29 +24,29 @@ double linear(struct neuron *pn, double *x)
 	return y;
 }
 
-double sigmoid(struct neuron *pn, double *x)
+double sigmoid(const struct neuron *pn, const double *x)
 {
 	return 1.0 / (1.0 + exp(-linear(pn, x)));
 }
 
-double sigmoid_d(struct neuron *n, double *x, double y)
+double sigmoid_d(const struct neuron *n, const double *x, double y)
 {
 	return (1.0 - y) * y;
 }
 
-double tgh(struct neuron *n, double *x)
+double tgh(const struct neuron *n, const double *x)
 {
 	double y = linear(n, x);
 	double a = exp(y), b = exp(-y);
 	return (a - b) / (a + b);
 }
 
-double tgh_d(struct neuron *n, double *x, double y)
+double tgh_d(const struct neuron *n, const double *x, double y)
 {
 	return 1.0 - y * y;
 }
 
-void update(struct neuron *n, double *x, double del_w, double momentum)
+void update(struct neuron *n, const double *x, double del_w, double momentum)
 {
 	size_t i;
 	double w;

@@ -10,6 +10,11 @@
 
 #include "neuron.h"
 
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
+
 struct neural_network {
 	/* all layers, layers[0] is the input layer, which is meanless
 	 * in compution, layers[nlayer-1] is the output layer
@@ -27,7 +32,8 @@ struct neural_network {
 
 	/* max of all dims */
 	size_t max_dim;
-
+	
+	/*Compute buffer of the network*/
 	double **values;
 };
 
@@ -84,6 +90,10 @@ void predict(struct neural_network *nn, double *input, double *output);
 void predict_hidden(struct neural_network *nn, double *input, double *hidden, size_t n);
 
 void destroy_nn(struct neural_network *nn);
+
+#if defined(__cplusplus)
+}
+#endif
 
 #endif
 

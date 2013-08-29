@@ -22,7 +22,7 @@ double** alloc_2d(size_t d1, size_t d2)
 	return buf;
 }
 
-double** alloc_2dv(size_t *dim, int len)
+double** alloc_2dv(const size_t *dim, int len)
 {
 	double** buf = (double**)malloc(sizeof(double*) * len);
 	int i;
