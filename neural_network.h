@@ -1,8 +1,8 @@
 /*************************************************************************
-	> File Name: neural_network.h
-	> Author: Felix Jiang
-	> Mail: f91.jiang@gmail.com 
-	> Created Time: Aug 9th, 2013
+    > File Name: neural_network.h
+    > Author: Felix Jiang
+    > Mail: f91.jiang@gmail.com 
+    > Created Time: Aug 9th, 2013
  ************************************************************************/
 
 #if !defined(_NEURAL_NETWORK_H_)
@@ -16,49 +16,49 @@ extern "C" {
 
 
 struct neural_network {
-	/* all layers, layers[0] is the input layer, which is meanless
-	 * in compution, layers[nlayer-1] is the output layer
-	 * */
-	struct neuron **layers;
+    /* all layers, layers[0] is the input layer, which is meanless
+     * in compution, layers[nlayer-1] is the output layer
+     * */
+    struct neuron **layers;
 
-	/* dim of input layer */
-	size_t dim_i;
+    /* dim of input layer */
+    size_t dim_i;
 
-	/* dims of each layer, dims[0] is the dim of input layer */
-	size_t *dims;
+    /* dims of each layer, dims[0] is the dim of input layer */
+    size_t *dims;
 
-	/* nlayer = one input layer + hidden layers + output layer*/
-	size_t nlayer;
+    /* nlayer = one input layer + hidden layers + output layer*/
+    size_t nlayer;
 
-	/* max of all dims */
-	size_t max_dim;
-	
-	/*Compute buffer of the network*/
-	double **values;
+    /* max of all dims */
+    size_t max_dim;
+    
+    /*Compute buffer of the network*/
+    double **values;
 };
 
 struct nn_config {
-	/* dims of hidden layers */
-	size_t *dim_h;
-	/* activation function of each hidden layer,
-	 * currently sigmoid function and tanh function
-	 * are support 
-	 * */
-	char **ahfunc;
+    /* dims of hidden layers */
+    size_t *dim_h;
+    /* activation function of each hidden layer,
+     * currently sigmoid function and tanh function
+     * are support 
+     * */
+    char **ahfunc;
 
-	/* the number of hidden layers */
-	size_t n_hidden;
+    /* the number of hidden layers */
+    size_t n_hidden;
 
-	/* dim of input layer */
-	size_t dim_i;
+    /* dim of input layer */
+    size_t dim_i;
 
-	/* dim of output layer */
-	size_t dim_o;
+    /* dim of output layer */
+    size_t dim_o;
 
-	/* activation function of output layer,
-	 * sigmoid and tanh function supported
-	 * */
-	char *aofunc;
+    /* activation function of output layer,
+     * sigmoid and tanh function supported
+     * */
+    char *aofunc;
 };
 
 /* create neural network using the config struct */
@@ -68,9 +68,9 @@ struct neural_network* create_nn(struct nn_config *config);
  *
  * nn: neural network created by create_nn function
  * input, output: pointers to a (double*) array, each array
- *				  is one training data
+ *                is one training data
  * ndata: number of training data, that is the length of input
- *		  and output
+ *        and output
  * rate: learning rate, the coefficient of bp algorithm
  * momentum: momentum of bp algorithm
  * n_iter: iter times, it is not a good idea for bp algorithm

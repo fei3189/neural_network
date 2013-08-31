@@ -1,8 +1,8 @@
 /*************************************************************************
-	> File Name: neuron.h
-	> Author: Felix Jiang
-	> Mail: f91.jiang@gmail.com 
-	> Created Time: Aug 9th, 2013
+    > File Name: neuron.h
+    > Author: Felix Jiang
+    > Mail: f91.jiang@gmail.com 
+    > Created Time: Aug 9th, 2013
  ************************************************************************/
 #if !defined(_NEURON_H_)
 #define _NEURON_H_
@@ -12,22 +12,22 @@ extern "C" {
 #endif
 
 struct neuron {
-	/* weights of the linear part, the last element is the threshold*/
-	double* weights;
+    /* weights of the linear part, the last element is the threshold*/
+    double* weights;
 
-	/* old delta_weight, for momentum in learning */
-	double* odw;
+    /* old delta_weight, for momentum in learning */
+    double* odw;
 
-	/* size of weights */
-	size_t nw;
+    /* size of weights */
+    size_t nw;
 
-	/* activate function */
-	double (*compute)(const struct neuron *n, const double *x);
-	/* derivation of activate function */
+    /* activate function */
+    double (*compute)(const struct neuron *n, const double *x);
+    /* derivation of activate function */
 
-	double (*derivate)(const struct neuron *n, const double *x, double o);
+    double (*derivate)(const struct neuron *n, const double *x, double o);
 
-	void (*update)(struct neuron *n, const double *x, double del_w, double momentum);
+    void (*update)(struct neuron *n, const double *x, double del_w, double momentum);
 };
 
 /* sigmoid function */
