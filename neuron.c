@@ -1,7 +1,7 @@
 /*************************************************************************
     > File Name: neuron.c
     > Author: Felix Jiang
-    > Mail: f91.jiang@gmail.com 
+    > Mail: f91.jiang AT gmail.com 
     > Created Time: Aug 9th, 2013
  ************************************************************************/
 
